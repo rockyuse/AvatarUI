@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d (%-4r ms) %-5p [%t] %c %x: %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="reportLoggerAppender" class="org.apache.log4j.appender.TimeAndSizeRollingAppender">
+		<param name="File" value="e:/logs/report.log" />
+		<param name="MaxFileSize" value="10kb" />
+		<param name="DateRollEnforced" value="true"/>
+        <param name="ScavengeInterval" value="-1"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d (%-4r ms) %-5p [%t] %c %x: %m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="cn.info" additivity="false">
+		<level value="debug" />
+		<!--<appender-ref ref="reportLoggerAppender" />-->
+		<appender-ref ref="Console" />
+	</logger>
+	
+	<root>
+	    <level value="error" />
+		<appender-ref ref="Console" />
+	</root>
+	
+</log4j:configuration> 
