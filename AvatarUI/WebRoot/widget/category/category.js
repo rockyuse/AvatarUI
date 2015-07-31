@@ -104,7 +104,7 @@
 			Category.getCategory(opt.initFid);
 		}
 		
-	    $(this).find("select").live("change", function(){
+	    $(this).on("change", 'select', function(){
 	    	$(this).nextAll("select").remove();
 	    	var thisVal = $(this).val();
     	

@@ -38,8 +38,8 @@ public class StudentController {
 		Long startTime = System.currentTimeMillis();
 
 		student = new Student();
-		int rowsNum = Integer.parseInt(request.getParameter("rowsNum"));
-		int pageNow = Integer.parseInt(request.getParameter("pageNow"));
+		int rowsNum = Integer.parseInt(request.getParameter("rows"));
+		int pageNow = Integer.parseInt(request.getParameter("page"));
 		
 		String sortRule = request.getParameter("sortRule");
 		String sortOrderBy = request.getParameter("sortOrderBy");
@@ -65,7 +65,7 @@ public class StudentController {
 		StringBuffer jsonString = new StringBuffer();
 		String jsonString2 = "";
 		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-		jsonString.append("{\"pageNow\":"+pageNow+",\"total\":"+studentTotal+",\"rows\":[");
+		jsonString.append("{\"page\":"+pageNow+",\"total\":"+studentTotal+",\"rows\":[");
 		
 		
 		for(int i = 0; i < studentList.size(); i++){
@@ -103,8 +103,8 @@ public class StudentController {
 		String startS = dateformatT.format(new Date());
 
 		student = new Student();
-		int rowsNum = Integer.parseInt(request.getParameter("rowsNum"));
-		int pageNow = Integer.parseInt(request.getParameter("pageNow"));
+		int rowsNum = Integer.parseInt(request.getParameter("rows"));
+		int pageNow = Integer.parseInt(request.getParameter("page"));
 		
 		String a = request.getParameter("a");
 		System.out.println(a);
@@ -134,7 +134,7 @@ public class StudentController {
 		StringBuffer jsonString = new StringBuffer();
 		String jsonString2 = "";
 		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-		jsonString.append("{\"pageNow\":"+pageNow+",\"total\":"+studentTotal+",\"rows\":[");
+		jsonString.append("{\"page\":"+pageNow+",\"total\":"+studentTotal+",\"rows\":[");
 		
 		
 		for(int i = 0; i < studentList.size(); i++){

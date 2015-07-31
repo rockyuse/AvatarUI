@@ -1,103 +1,107 @@
 /**
- * AvatarUI-琛ㄦ牸
- * @version	v2.0.1
- * @author	Rocky(296456018@qq.com)
- * @date	2013-04-25
+ * 表格组件
+ * @author dujz1
+ * @date   2015-08-01
  */
+ 
+.dg{ position:relative; background:#fafafa; border: 1px solid #ddd; overflow:hidden; }
+.dg .dgLoading{display:none;position:absolute;top:0;left:0;background:#f8f8f8;filter:alpha(opacity=75); -moz-opacity:.75; opacity:.75;z-index:10000}
 
-/*------ datagrid start ------*/
-.dg{ display:none; position:relative; background:#EBF2F8; border:1px solid #c6daea; overflow:hidden;}
-.dg .dgLoading{ display:none; position:absolute; top:0; left:0; background:#eee; filter:alpha(opacity=80); -moz-opacity:0.80; opacity:0.80; z-index:10000;}
-.dg .dgLoadingCon{ position:absolute; top:50%; left:50%; width:150px; height:30px; margin:-30px 0 0 -75px; background:#fff; border:1px solid #c6daea; line-height:30px; text-align:center; color:#000;}
-.dgFirstCol{ position:absolute; left:0; top:0; z-index:100;}
-.dgFirstCol .tableHeader{ 
-	height:30px;
-	background-color:#ecf3fb;
-	background-image:-webkit-gradient(linear,left top,left bottom,from(#ecf3fb),to(#d9e9f5));
-	background-image:-webkit-linear-gradient(top,#ecf3fb,#d9e9f5);
-	background-image:-moz-linear-gradient(top,#ecf3fb,#d9e9f5);
-	background-image:-o-linear-gradient(top,#ecf3fb,#d9e9f5);
-	background-image:linear-gradient(to bottom,#ecf3fb,#d9e9f5);
-	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ecf3fb,endColorStr=#d9e9f5);
-	font-size:12px
+.dg .dgLoadingCon{position:absolute; top:50%; left:50%; width:32px;height:32px; margin:-32px 0 0 -16px;
+background:url(../images/icon_loading.gif) center center no-repeat;}
+
+.dgFirstCol{position:absolute;left:0;top:0;z-index:100}
+.dgFirstCol .tableHeader{height: 36px; background-color: #f0f0f0; font-size:12px; }
+.dgFirstCol .tableHeader td{border-right:1px solid #ddd;font-weight:bold;text-align:center}
+.dgFirstCol .tableHeaderColspan{height:50px}
+.dgFirstCol .tableCon{ position: relative; overflow: hidden; border-top: 1px solid #ddd;}
+.dgFirstCol .tableCon table{position:absolute;top:-1px;}
+.dgFirstCol .tableCon td{border-bottom:1px solid #ddd;border-right:1px solid #ddd; line-height: 34px;text-align:center;}
+.dgFirstCol .tableFooter{ display: none;}
+.dgFirstCol .tableFooter td{ height: 36px; background: #F4F7F9; border-top: 1px solid #ddd; }
+.dg .dgResizeRight{position:absolute;right:0;top:0;width:2px;cursor:e-resize}
+.dg .dgResizeRightBottom{position:absolute; right:0; bottom:0;width:2px;height:2px;cursor:se-resize;line-height:0;font-size:0}.dg .dgResizeBottom{position:absolute;left:0;bottom:0;width:100%;height:2px;cursor:s-resize;line-height:0;font-size:0}
+.dg .dgHeader{position:relative; height: 36px; background-color: #f0f0f0;}
+.dg .dgHeader table{ width: 100%;}
+
+.dg .dgHeader .colResize div{position:absolute;left:0;top:0; width:3px; height:36px;cursor:e-resize}
+.dg .colShow{display:none;position:absolute;border:1px solid #ddd;width:80px;padding-left:10px;background:#f8f8f8;z-index:1}.dg .colShow .colShowItem{line-height:24px}.dg .colShow .colShowItem input{margin-right:3px;vertical-align:middle}
+.dg .dgHeader td{height:36px;padding:0 5px;word-break:break-all;border-right:1px solid #ddd; font-weight:bold}
+.dg .dgHeader td .dgHeaderTdDiv{overflow:hidden}
+.dg .dgHeaderColspan{height:50px}
+.dg .dgHeaderColspan td{height:24px;line-height:24px}
+.dg .dgHeaderColspan td div{height:24px}
+.dg .dgHeaderColspan .dgHeaderTd td{font-weight:normal}
+.dg .dgHeader .sortable{background:url(../images/sort_able.png) right center no-repeat;cursor:pointer}
+.dg .dgHeader .sortabledesc{background:url(../images/sort_desc.png) right center no-repeat}
+.dg .dgHeader .sortableasc{background:url(../images/sort_asc.png) right center no-repeat}
+.dg .dgContent{position:relative;overflow:auto; border-top: 1px solid #ddd;}
+.dg .dgContentTable td{padding: 7px 0;border-right:1px solid #ddd;border-bottom:1px solid #ddd;line-height:18px}
+.dg .dgContentTable tr{background:#fff}
+.dgFirstCol .tableCon tr{background:#fff}
+.dg tr.trOdd,.dgFirstCol .tableCon tr.trOdd{ background: #fafafa;}
+.dg tr.trHover, .dgFirstCol .tableCon tr.trHover{ background: #fcf4df}
+.dg tr.trClick, .dgFirstCol .tableCon tr.trClick{ background: #d6e5fb;}
+.dg .dgContent td div.dgContentInnerDiv{height: 20px; padding: 0 5px; line-height: 20px; word-break:break-all;overflow:hidden;word-wrap:break-word; }
+.dg .dgContent td div.auto{ height: auto}
+.dg .dgFooter{ display:none; height: 36px; padding:0 10px; line-height:36px; background: #F4F7F9; }
+.dg .dgFooter .pageNow{width:30px}
+.dg .dgFooter input{padding:2px 0}
+.dg .dgFooter .dgPage{float:left; }
+.dg .dgFooter .dgPage select{ height: 24px; margin-right: 10px;}
+.dg .dgFooter .dgPage input{ height: 15px;}
+.dg .dgFooter .dgPage span{display:inline-block;*display:inline;*zoom:1;vertical-align:middle;width:16px;height:16px; margin-top: -3px; padding:3px}
+.dg .dgFooter .dgPage span a{display:block;width:16px;height:16px;line-height:16px; overflow:hidden; text-align: center;}
+
+.dg .dgFooter .pageFirst,
+.dg .dgFooter .pagePrev,
+.dg .dgFooter .pageNext,
+.dg .dgFooter .pageLast{ 
+	color: #ccc; cursor: default; font-family: simsun; font-weight: bold;
 }
-.dgFirstCol .tableHeader td{ border-right:1px solid #c6daea; font-weight:bold; text-align:center;}
-.dgFirstCol .tableHeaderColspan{ height:51px;}
 
-.dgFirstCol .tableCon{ position:relative; overflow:hidden; border-top:1px solid #d6d6d6;}
-.dgFirstCol .tableCon table{ position:absolute; top:-1px/9}
-.dgFirstCol .tableCon td{ border-bottom:1px solid #c6daea; border-right:1px solid #c6daea; line-height:24px; text-align:center; }
-.dgFirstCol .tableFooter{ display:none;}
-.dgFirstCol .tableFooter td{ height:30px; background:#EBF2F8; border-top:1px solid #c6daea; border-right:1px solid #EFEFEF;}
+.dg .dgFooter .pageFirstAble,
+.dg .dgFooter .pagePrevAble,
+.dg .dgFooter .pageNextAble,
+.dg .dgFooter .pageLastAble
+{ color: #666; cursor:pointer}
 
-.dg .dgResizeRight{ position:absolute; right:0; top:0; width:2px; cursor:e-resize;}
-.dg .dgResizeRightBottom{ position:absolute; right:0; bottom:0; width:2px; height:2px; cursor:se-resize; line-height:0; font-size:0;}
-.dg .dgResizeBottom{ position:absolute; left:0; bottom:0; width:100%; height:2px; cursor:s-resize; line-height:0; font-size:0;}
+.dg .dgFooter .pageTotal{ font-weight: normal;}
 
-.dg .dgHeader{
-	position:relative;
-	height:30px;
-	background-color:#ecf3fb;
-	background-image:-webkit-gradient(linear,left top,left bottom,from(#ecf3fb),to(#d9e9f5));
-	background-image:-webkit-linear-gradient(top,#ecf3fb,#d9e9f5);
-	background-image:-moz-linear-gradient(top,#ecf3fb,#d9e9f5);
-	background-image:-o-linear-gradient(top,#ecf3fb,#d9e9f5);
-	background-image:linear-gradient(to bottom,#ecf3fb,#d9e9f5);
-	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ecf3fb,endColorStr=#d9e9f5)
-}
-.dg .dgHeader .colResize div{ position:absolute; left:0; top:0; width:3px; height:30px; cursor:e-resize;}
-.dg .colToggle{ display:none; position:absolute; border:1px solid #c6daea; width:80px; padding-left:10px; background:#f8f8f8; z-index:1;}
-.dg .colToggle .colToggleItem{ line-height:24px;}
-.dg .colToggle .colToggleItem input{ margin-right:3px; vertical-align:middle;}
+.dg .dgFooter .pageGoBtn{text-decoration:underline;color:#333}
+.dg .dgFooter .dgPageStatus{float:right}
+.dg .resizeHover{background:#aaa}
+.dg .dgContentTable td.red{background:#E1785B}
+.dg .dgContentTable td.orange{background:#fbea71}
+.dg .dgContentTable td.green{background:#91E087}
+.dg .dgContentTable td.blue{background:#4572a7}
+.dg .dgContentTable thead th{height:30px;padding:0 10px;line-height:30px;font-size:12px;background:#fff;border-bottom:1px solid #C6DAEA;
+background-color: #dfecf6;}
+.dg .dgContentTable td.noBorder{border-right:0;}
 
-.dg .dgHeader td{ height:30px; padding:0 4px; word-break:break-all; border-right:1px solid #c6daea; font-weight:bold;}
-.dg .dgHeader td .dgHeaderTdDiv{ overflow:hidden;}
+.dg .fontGrey{ font-size: 11px; margin-left: 3px;}
 
-.dg .dgHeaderColspan{ height:50px;}
-.dg .dgHeaderColspan td{ height:24px; line-height:24px;}
-.dg .dgHeaderColspan td div{ height:24px;}
-.dg .dgHeaderColspan .dgHeaderTd td{ font-weight:normal;}
+.noData{height: 400px; text-align: center; line-height: 400px;font-size:18px;font-weight:bold;}
 
+.dgContentTable{width:100%;}
 
-.dg .dgHeader .sortable{ background:url(../images/sort_able.gif) right center no-repeat; cursor:pointer;}
-.dg .dgHeader .sortabledesc{ background:url(../images/sort_desc.gif) right center no-repeat;}
-.dg .dgHeader .sortableasc{ background:url(../images/sort_asc.gif) right center no-repeat;}
-
-.dg .dgContent{ position:relative; overflow:auto; border-top:1px solid #c6daea; }
-.dg .dgContentTable td{ padding:3px 0; border-right:1px solid #c6daea; border-bottom:1px solid #c6daea; line-height:18px;}
-.dg .dgContentTable tr{ background:#fff;}
-
-.dgFirstCol .tableCon tr{ background:#fff;}
-.dg tr.trOdd, .dgFirstCol .tableCon tr.trOdd{ background:#F9F9F9;}
-.dg tr.trHover, .dgFirstCol .tableCon tr.trHover{ background:#FEFACC;}
-.dg tr.trClick, .dgFirstCol .tableCon tr.trClick{ background:#d0e4f9;}
-
-.dg .dgContent td div.dgContentInnerDiv{ height:18px; padding:0 4px; word-break:break-all; overflow:hidden; word-wrap:break-word;}
-.dg .dgContent td div.auto{ height:auto;}
-
-.dg .dgFooter{ display:none; height:30px; padding:0 5px; background:#EBF2F8; border-top:1px solid #c6daea; line-height:30px;}
-.dg .dgFooter .pageNow{ width:30px;}
-.dg .dgFooter .dgPage{ float:left; _padding-top:4px; _line-height:14px;}
-.dg .dgFooter .dgPage span{ display:inline-block; *display:inline; *zoom:1; vertical-align:middle; width:16px; height:16px; padding:3px;}
-.dg .dgFooter .dgPage span.hover{ background:url(../images/bar-button-over.gif);}
-.dg .dgFooter .dgPage span a{ display:block; width:16px; height:16px; line-height:16px; text-indent:-9999px; overflow:hidden;}
-
-.dg .dgFooter .pageFirst{ background:url(../images/icon-first.gif) 0 -16px; cursor:default;}
-.dg .dgFooter .pageFirstAble{ background:url(../images/icon-first.gif); cursor:pointer;}
-.dg .dgFooter .pagePrev{ background:url(../images/icon-prev.gif) 0 -16px; cursor:default;}
-.dg .dgFooter .pagePrevAble{ background:url(../images/icon-prev.gif); cursor:pointer;}
-.dg .dgFooter .pageNext{ background:url(../images/icon-next.gif) 0 -16px; cursor:default;}
-.dg .dgFooter .pageNextAble{ background:url(../images/icon-next.gif); cursor:pointer;}
-.dg .dgFooter .pageLast{ background:url(../images/icon-last.gif) 0 -16px; cursor:default;}
-.dg .dgFooter .pageLastAble{ background:url(../images/icon-last.gif); cursor:pointer;}
-.dg .dgFooter .pageGoBtn{ text-decoration:underline; color:#333;}
-
-.dg .dgFooter .dgPageStatus{ float:right;}
-.dg .resizeHover{ background:#aaa;}
-
-
-.dg .dgContentTable td.red{ background:#DB4F4A;}
-.dg .dgContentTable td.orange{ background:#FBEA71;}
-.dg .dgContentTable td.green{ background:#81CE81;}
-.dg .dgContentTable td.blue{ background:#4572A7;}
-/*------ datagrid end ------*/
+/* jspScroll */
+.dg .jspScrollable{outline:none;}
+.dg .jspContainer{overflow:hidden;position:relative;outline: none;}
+.dg .jspContainer:focus{outline: none;}
+.dg .jspPane{position:absolute;outline: none;}
+.dg .jspVerticalBar{position:absolute;top:0;right:0;width:10px;height:100%}
+.dg .jspHorizontalBar{position:absolute;bottom:0;left:0;width:100%;height:10px}
+.dg .jspVerticalBar *,.jspHorizontalBar *{margin:0;padding:0}
+.dg .jspCap{display:none}
+.dg .jspHorizontalBar .jspCap{float:left}
+.dg .jspTrack{background:#DBDBDB;position:relative;-webkit-border-radius:12px;border-radius:12px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}
+.dg .jspDrag{background:#7AB1DB;position:relative;top:0;left:0;cursor:pointer;-webkit-border-radius:12px;border-radius:12px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}
+.dg .jspDrag:hover{ background: #4c9ddb;}
+.dg .jspHorizontalBar .jspTrack,.jspHorizontalBar .jspDrag{float:left;height:100%}
+.dg .jspArrow{background:#50506d;text-indent:-20000px;display:block;cursor:pointer}
+.dg .jspArrow.jspDisabled{cursor:default;background:#80808d}
+.dg .jspVerticalBar .jspArrow{height:16px}
+.dg .jspHorizontalBar .jspArrow{width:16px;float:left;height:100%}
+.dg .jspVerticalBar .jspArrow:focus{outline:none}
+.dg .jspCorner{background:#eeeef4;float:left;height:100%}
